@@ -50,12 +50,12 @@ app.get("/all", function(req, res) {
 //Scrape data from one site and place it into the mongodb db
 app.get("/scrape", function(req, res) {
     // Making a request call for BBC
-    request("http://www.bbc.com/news/world", function(error, response, html) {
+    request("http://www.bbc.com/news", function(error, response, html) {
 
         //Loaded the HTML into cheerio and saved it to a variable
         var $ = cheerio.load(html);
       
-        $("span.title-link__title-text").each(function(i, element) {
+        $("a.gs-c-promo-heading nw-o-link-split__anchor gs-o-faux-block-link__overlay-link gel-pica-bold").each(function(i, element) {
 
             //Save an empty result object
             var result = {};
