@@ -7,9 +7,9 @@ var express = require("express");
 var mongojs = require("mongojs");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
-//future models for note and story/article
-//var Note = require("./models/Note.js");
-//var Story = require("./models/Story.js");
+//models for note and story/article
+var Note = require("./models/Note.js");
+var Article = require("./models/Article.js");
 
 mongoose.Promise = Promise;
 var app = express();
