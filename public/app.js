@@ -26,6 +26,8 @@ $(document).on("click", "p", function() {
 
       $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
 
+      $("#notes").append("<button data-id='" + data._id + "' id='deletenote'>Delete Note</button>");
+
       if (data.note) {
 
         $("#titleinput").val(data.note.title);
@@ -56,3 +58,23 @@ $(document).on("click", "#savenote", function() {
   $("#titleinput").val("");
   $("#bodyinput").val("");
 });
+
+// delete button
+$(document).on("click", "#deletenote", function() {
+  var thisId = $(this).attr("data-id");
+
+  // Run a POST request to change the note
+  $.ajax({
+    method: "POST",
+    url: "/all/" + thisId,
+    data: {
+      title: $("#titleinput").val(""),
+      body: $("#bodyinput").val("")
+    }
+  })
+    .done(function(data) {
+      console.log(data);
+      $("#notes").empty();
+    });
+});
+

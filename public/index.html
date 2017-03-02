@@ -4,17 +4,64 @@
     <meta charset="UTF-8">
     <title>mongoose frame</title>
     <!--css possibly late-->
+   <style>
+    body { background-image: url('https://upload.wikimedia.org/wikipedia/en/thumb/f/ff/BBC_News.svg/1280px-BBC_News.svg.png') }
+       #headline{
+        font-size: 30px;
+        text-decoration: underline;
+      }
+      #wrapper {
+        width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 10%;
+      }
+      input {
+        height: 35px;
+        font-size: 25px;
+      }
+      #articles {
+        display: inline-block;
+        overflow: auto;
+        width: 60%;
+        height: 700px;
+        font-size: 20px;
+        font-weight: 100px;
+      }
+      #notes {
+        float: right;
+        width: 30%;
+      }
+      textarea, input {
+        display: block;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      textarea {
+        height: 200px;
+        font-size: 18px;
+      }
+      h1{
+        text-align: center;
+        font-size: 40px;
+      }
+      h2{
+        text-align: center;
+        font-size: 30px;
+      }
+    </style> 
+
+
   </head>
   <body>
     <div id="wrapper">
       <h1>Scraper</h1>
       <h2><i>Will hold the links of the articles from the site.</i></h2>
-      <div><button type="button" id="scrape">Scraped</button></div>
+      <div><button type="button" id="scrape">Get Scraped</button></div>
       <div id="articles"></div>
       <div id="notes"></div>
     </div>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="app.js"></script>
-    <script src="server.js"></script>
   </body>
 </html>

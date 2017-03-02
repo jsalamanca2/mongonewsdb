@@ -1,4 +1,4 @@
-//----------------//
+//----------------/
 var request = require("request");
 
 var cheerio = require("cheerio");
@@ -55,12 +55,10 @@ app.get("/scrape", function(req, res) {
         //Loaded the HTML into cheerio and saved it to a variable
         var $ = cheerio.load(html);
       
-        $("a.title-link__title-text").each(function(i, element) {
+        $("span.title-link__title-text").each(function(i, element) {
 
             //Save an empty result object
             var result = {};
-
-            // Add the text and href of every link, and save them as properties of the result object
             result.title = $(this).text();
             result.link = $(this).attr("href");
 
@@ -143,5 +141,5 @@ app.post("/all/:id", function(req, res) {
 
 // Listen on port 3000
 app.listen(3000, function() {
-    console.log("App running on port 3000!");
+    console.log("App running on port 3000!!!!!!!!!!!!!!!!!!");
 });
