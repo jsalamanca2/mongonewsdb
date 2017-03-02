@@ -87,6 +87,59 @@ app.get("/scrape", function(req, res) {
     res.send("Scrape Complete")
 });
 
+// Grab an article by it's ObjectId
+app.get("/all/:id", function(req, res) {
+    Article.findOne({
+            "_id": req.params.id
+        })
+     
+        .populate("note")
+      
+        .exec(function(error, doc) {
+            
+            if (error) {
+                console.log(error);
+            }
+            
+            else {
+                res.json(doc);
+            }
+        });
+});
+
+
+// Create a new note or replace
+app.post("/all/:id", function(req, res) {
+    // Create a new note and pass the req.body to the entry
+    var newNote = new Note(req.body);
+
+    // And save the new note
+    newNote.save(function(error, doc) {
+   
+        if (error) {
+            console.log(error);
+        }
+     
+        else {
+            // Use the article id to find and update it's note
+            Article.findOneAndUpdate({
+                    "_id": req.params.id
+                }, {
+                    "note": doc._id
+                })
+                // Execute the above query
+                .exec(function(err, doc) {
+                   
+                    if (err) {
+                        console.log(err);
+                    } else {
+                       
+                        res.send(doc);
+                    }
+                });
+        }
+    });
+});
 
 // Listen on port 3000
 app.listen(3000, function() {
