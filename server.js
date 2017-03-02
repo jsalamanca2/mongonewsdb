@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/scraper");
+mongoose.connect("mongodb://heroku_53pfb1jw:9lc4sjsk2vhhd8c3lejvp1qhbm@ds115870.mlab.com:15870/heroku_53pfb1jw");
 var db = mongoose.connection;
 
 // errors to be shown
